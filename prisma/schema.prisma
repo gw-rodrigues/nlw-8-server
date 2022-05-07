@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//Vai criar tabela no prima
+model Feedback {
+
+  //como fazer auto-increment
+  // id int @id @default(autoincrement())
+
+  //Univer Unique ID ( 3131231F-3213-5435-FDS42342A )
+  // id String @id @default(uuid())
+
+  //Snowflake ID
+
+  //precisa indicar campos e a chave primaria
+  id         String  @id @default(uuid())
+  type       String
+  comment    String
+  screenshot String?
+
+  //para criar table - terminal: npx prisma migrate dev
+
+  //para ver a table - terminal: npx prisma studio
+  @@map("feedbacks")
+}
