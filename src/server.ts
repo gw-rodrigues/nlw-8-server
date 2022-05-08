@@ -1,5 +1,6 @@
 import express from "express";
 import { routes } from "./routes";
+import cors from 'cors'
 
 const app = express();
 
@@ -25,6 +26,10 @@ const app = express();
 //PUT = atualizar informações 1 entidade
 //PATCH = atualizar 1 campo informação 1 entidade
 //DELETE = delete 1 informação
+
+//controle de segurança, nao permite endereço estranhos acessar nosso backend
+//add ex: {origin: 'http://localhost:3000'}
+app.use(cors())
 
 //verifica antes pedidos existe objeto JSON e objeto tradicional JS
 app.use(express.json());
