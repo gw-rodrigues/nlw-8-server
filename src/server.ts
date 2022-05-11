@@ -1,8 +1,7 @@
 import express from "express";
+import cors from 'cors';
 import { routes } from "./routes";
-import cors from 'cors'
-
-const app = express();
+import bodyParser from 'body-parser'
 
 //SOLID
 /*
@@ -27,9 +26,15 @@ const app = express();
 //PATCH = atualizar 1 campo informação 1 entidade
 //DELETE = delete 1 informação
 
+const app = express();
+
 //controle de segurança, nao permite endereço estranhos acessar nosso backend
 //add ex: {origin: 'http://localhost:3000'}
 app.use(cors())
+
+//FIXING - Error 413 payload too large when upload image
+app.use(bodyParser.json({ limit: "2mb"}));
+app.use(bodyParser.urlencoded({ limit: "2mb", extended: true }));
 
 //verifica antes pedidos existe objeto JSON e objeto tradicional JS
 app.use(express.json());
