@@ -31,10 +31,10 @@ If the project uses <strong>main as the default branch</strong>, suffix the proj
 ```sh
 npx degit user/repository#main new-project-folder-name
 ```
-If you want see the data sended to prisma database.
-Must change values in:
--- misgrations/migration_lock.toml > provider = "sqlite"
--- schema.prisma > provider = "sqlite"
+If you want see the data sended to prisma database.</br>
+Must change values in:</br>
+  - misgrations/migration_lock.toml > provider = "sqlite"</br>
+  - schema.prisma > provider = "sqlite"</br>
 ```sh
 npx prisma studio
 ```
